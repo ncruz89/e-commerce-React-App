@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 import FormInput from "../form-input/form-input.component";
-import "./sign-up-form.styles.scss";
-
 import Button from "../button/button.component";
 
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
+
+import "./sign-up-form.styles.scss";
 
 const defaultFormFields = {
   displayName: "",
@@ -37,12 +37,13 @@ const SignUpForm = () => {
         email,
         password
       );
+
       // dont forget to pass displayName when you're generating document from createAuthUser return
-      console.log({ displayName });
       // create user document with what was returned from createAuthUserWithEm... function
-      const userDocRef = await createUserDocumentFromAuth(user, {
+      await createUserDocumentFromAuth(user, {
         displayName,
       });
+
       resetFormFields();
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
