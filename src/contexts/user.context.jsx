@@ -7,7 +7,7 @@ import {
 
 export const UserContext = createContext({
   currentUser: null,
-  setCurrentUser: () => {},
+  setCurrentUser: () => null,
 });
 
 export const UserProvider = ({ children }) => {
