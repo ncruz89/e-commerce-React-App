@@ -20,6 +20,10 @@ export const ImageContainer = styled.div`
   }
 `;
 
+export const BaseSpan = styled.span`
+  width: 23%;
+`;
+
 export const Name = styled.span`
   width: 23%;
 `;
