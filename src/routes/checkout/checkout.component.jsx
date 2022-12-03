@@ -1,4 +1,5 @@
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 
 import {
   CheckoutContainer,
@@ -43,6 +44,7 @@ const Checkout = () => {
       <Total>
         {cartItems.length > 0 ? `Total: $${cartTotal}` : "cart is empty"}
       </Total>
+      <PaymentForm />
     </CheckoutContainer>
   );
 };
