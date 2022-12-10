@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectCartItems } from "../../store/cart/cart.selector";
@@ -18,7 +19,8 @@ import {
   RemoveButton,
 } from "./checkout-item.styles";
 
-const CheckoutItem = ({ cartItem }) => {
+// added memo method to prevent re-renders of items already in cart when mapping through cart items every time quantity change or new product added to cart.
+const CheckoutItem = memo(({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
@@ -44,6 +46,6 @@ const CheckoutItem = ({ cartItem }) => {
       <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
     </CheckoutItemContainer>
   );
-};
+});
 
 export default CheckoutItem;

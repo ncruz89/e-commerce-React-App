@@ -1,6 +1,9 @@
+import { memo } from "react";
+
 import { CartItemContainer, ItemDetails, Name } from "./cart-item.styles.jsx";
 
-const CartItem = ({ cartItem }) => {
+// add memo method to prevent re-renders of products being added multiple times. Now only quantities are updated but individual products aren't re-rendered because of quantity change.
+const CartItem = memo(({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   return (
     <CartItemContainer>
@@ -13,6 +16,6 @@ const CartItem = ({ cartItem }) => {
       </ItemDetails>
     </CartItemContainer>
   );
-};
+});
 
 export default CartItem;

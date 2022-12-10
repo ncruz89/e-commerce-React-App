@@ -25,11 +25,23 @@ export const Body = styled.div`
     font-size: 22px;
     color: #4a4a4a;
     text-transform: uppercase;
+
+    @media screen and (max-width: 720px) {
+      font-size: 17px;
+    }
   }
 
   p {
     font-weight: lighter;
     font-size: 16px;
+
+    @media screen and (max-width: 720px) {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (max-width: 469px) {
+    width: 40%;
   }
 `;
 
@@ -67,6 +79,10 @@ export const DirectoryItemContainer = styled.div`
 
   &:last-child {
     margin-left: 7.5px;
+  }
+
+  @media screen and (max-width: 720px) {
+    height: 200px;
   }
 `;
 

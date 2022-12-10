@@ -34,6 +34,10 @@ export const CartDropdownContainer = styled.div`
     background: lightgray;
     border-radius: 5px;
   }
+
+  @media screen and (max-width: 300px) {
+    right: 20px;
+  }
 `;
 
 export const EmptyMessage = styled.span`

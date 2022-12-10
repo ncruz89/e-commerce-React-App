@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../button/button.component";
 
 export const SignUpContainer = styled.div`
   display: flex;
@@ -7,6 +8,16 @@ export const SignUpContainer = styled.div`
 
   h2 {
     margin: 10px 0;
+  }
+
+  @media screen and (max-width: 720px) {
+    width: 90%;
+  }
+`;
+
+export const SignUpButton = styled(Button)`
+  @media screen and (max-width: 720px) {
+    width: 100%;
   }
 `;
 

@@ -12,6 +12,15 @@ export const SignInContainer = styled.div`
   .buttons-container {
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 410px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    width: 90%;
   }
 `;
 
