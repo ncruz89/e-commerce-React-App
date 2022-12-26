@@ -31,41 +31,51 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// firebase boilerplate
 initializeApp(firebaseConfig);
 
+// must create a provider to use with firebase login functions
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
 export const auth = getAuth();
-
+// sign in with google pop up function from firebase library
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 
+// sign in with google redirect function from firebase library
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
 
+// set db variable using getFirestore function from firebase/firestore - firebase boilerplate
 export const db = getFirestore();
 
-// creating collection map
+// creating collection map - firebase boilerplate
+// populating db with product documents in appropriate categories (collections)
+// used shop-data.js file populated with store data
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
 ) => {
-  const collectionRef = collection(db, collectionKey);
-  const batch = writeBatch(db);
+  const collectionRef = collection(db, collectionKey); // creates collection reference in db
+  const batch = writeBatch(db); // creates batch to house documents in collection
 
+  // goes through objectsToAdd and creates document reference for each category (collection) where the object title is the key
+  // batch set uses doc ref and sets the object (contains shop data documents) to the corresponding doc ref key - if there isn't a collection it will automatically create one
+  // sets those collections to batch
   objectsToAdd.forEach((object) => {
     const docRef = doc(collectionRef, object.title.toLowerCase());
     batch.set(docRef, object);
   });
 
+  // commits batch to db
   await batch.commit();
   console.log("done");
 };
 
-// get our category map
+// retrieves categories array from collection
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
@@ -74,13 +84,9 @@ export const getCategoriesAndDocuments = async () => {
 
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 
-  // .reduce((acc, docSnapshot) => {
-  //   const { title, items } = docSnapshot.data();
-  //   acc[title.toLowerCase()] = items;
-  //   return acc;
-  // }, {});
-
-  // return categoryMap;
+  // for scalability sake, simply returning a categories array
+  // now there is only a base form of the shop data and selectors can handle manipulating it
+  // this way if another selector wanted to manipulate the data in a different way, it can do so.
 };
 
 export const createUserDocumentFromAuth = async (
@@ -94,7 +100,7 @@ export const createUserDocumentFromAuth = async (
   const userSnapshot = await getDoc(userDocRef);
 
   // check if user data exists
-  // if user data doesn't exist, create /set the doc with the data from userAuth in my collection
+  // if user data doesn't exist, create/set the doc with the data from userAuth in my collection
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
@@ -129,5 +135,6 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => signOut(auth);
 
+// auth observer used in app.js
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);

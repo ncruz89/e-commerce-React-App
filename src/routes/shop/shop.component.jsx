@@ -7,16 +7,20 @@ import { setCategories } from "../../store/categories/categories.action";
 import CategoriesPreview from "../categories-preview/categories-preview.component";
 import Category from "../category/category.component";
 
+// shop page - renders shop categories previews
+// previews are first 4 products in categoriesMap object
+
 const Shop = () => {
   const dispatch = useDispatch();
+  // useEffect to retrieve shop categoriesArray from db on initial render
   useEffect(() => {
-    const getCategoriesMap = async () => {
+    const getCategoriesArray = async () => {
       const categoriesArray = await getCategoriesAndDocuments("categories");
 
       dispatch(setCategories(categoriesArray));
     };
 
-    getCategoriesMap();
+    getCategoriesArray();
   }, []);
 
   return (

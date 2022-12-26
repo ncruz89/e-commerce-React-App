@@ -23,6 +23,8 @@ const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
 
+  // navigation set up
+  // Outlet from react router dom renders rest of nested apps returned from app.js component
   return (
     <Fragment>
       <NavigationContainer>

@@ -11,3 +11,5 @@ export const loggerMiddleware = (store) => (next) => (action) => {
 
   console.log("next state: ", store.getState());
 };
+
+// alternate middleware where next state is logged in proper order

@@ -18,7 +18,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      {/*wrap app with redux store */}
       <PersistGate loading={null} persistor={persistor}>
+        {/* wrap all app in PersistGate component - persistor boilerplate - loading null renders nothing till persistor rehydrates from browser local storage */}
         <BrowserRouter>
           <Elements stripe={stripePromise}>
             <App />
