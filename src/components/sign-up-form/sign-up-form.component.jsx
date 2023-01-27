@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../../store/user/user.action";
 
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -19,14 +18,20 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
+// SignUpForm component
+// handles form field state
+// renders signup form which contains 4 input fields and a signup button
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const dispatch = useDispatch();
 
+  // helper function to reset form fields state to default state
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
+
+  // submit handler
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,14 +46,16 @@ const SignUpForm = () => {
         password
       );
 
-      // dont forget to pass displayName when you're generating document from createAuthUser return
-      // create user document with what was returned from createAuthUserWithEm... function
+      // create user document in firebase db with what was returned from createAuthUserWithEm... function
+      // dont forget to pass displayName when you're generating document from createAuthUser... return
       await createUserDocumentFromAuth(user, {
         displayName,
       });
 
+      // set currentUser state
       dispatch(setCurrentUser(user));
 
+      // call to reset form fields
       resetFormFields();
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {
@@ -57,6 +64,8 @@ const SignUpForm = () => {
     }
   };
 
+  // input change handler
+  // sets form field state when input fields change
   const handleChange = (event) => {
     const { name, value } = event.target;
 

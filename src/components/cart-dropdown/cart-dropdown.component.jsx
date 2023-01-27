@@ -15,6 +15,11 @@ import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 import { setIsCartOpen } from "../../store/cart/cart.action.js";
 
+// CartDropdown component
+
+// renders cart dropdown that houses Cart Items and a go to checkout Button
+// if cartItems state isn't an empty array then cartItems state is mapped over and renders CartItem component(s)
+// else renders an cart is empty message
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();

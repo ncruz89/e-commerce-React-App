@@ -40,7 +40,9 @@ googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
+// retrieves current firebase auth instance
 export const auth = getAuth();
+
 // sign in with google pop up function from firebase library
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
@@ -89,6 +91,7 @@ export const getCategoriesAndDocuments = async () => {
   // this way if another selector wanted to manipulate the data in a different way, it can do so.
 };
 
+// creates user document in firebase if user already exists returns userDocRef
 export const createUserDocumentFromAuth = async (
   userAuth,
   additionalInformation = {}
@@ -121,20 +124,23 @@ export const createUserDocumentFromAuth = async (
   return userDocRef;
 };
 
+// function to call firebases createUserWithEmailAndPassword method
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
+// function to call firebases signInWithEmailAndPassword method
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
+// function to call firebases signOut method
 export const signOutUser = async () => signOut(auth);
 
-// auth observer used in app.js
+// auth observer used in app.js listens to auth state change and runs callback on auth change
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);

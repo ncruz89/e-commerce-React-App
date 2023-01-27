@@ -14,6 +14,15 @@ import {
   PaymentButton,
 } from "./payment-form.styles";
 
+// PaymentForm component
+// handles stripe payment processing state
+
+// calls netlify serverless function
+// retrieves client secret and confirms payment with stripe server
+// clears payment form elements using stripe API provided methods
+
+// renders credit cart payment form which contains credit cart form (CardElement component) and paymentButton components
+
 const PaymentForm = () => {
   const stripe = useStripe();
   const elements = useElements();

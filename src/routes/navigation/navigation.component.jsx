@@ -19,6 +19,7 @@ import {
   NavLink,
 } from "./navigation.styles";
 
+// Navigation Component
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);

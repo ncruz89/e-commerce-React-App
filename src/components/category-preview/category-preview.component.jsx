@@ -6,6 +6,12 @@ import {
   Preview,
 } from "./category-preview.styles.jsx";
 
+// CategoryPreview component
+// receives title and products array as parameters
+
+// renders a category preview showing the category title
+// also maps through the products array and renders a ProductCard component of the first 4 elements in title product array
+
 const CategoryPreview = ({ title, products }) => {
   return (
     <CategoryPreviewContainer>

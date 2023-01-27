@@ -12,6 +12,12 @@ import {
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
+// ProductCard component
+// receives product object as parameter
+
+// renders product card with product details and an add to cart button
+// add to cart button updates cart state with product
+
 const ProductCard = ({ product }) => {
   const { name, price, imageUrl } = product;
   const dispatch = useDispatch();

@@ -35,6 +35,9 @@ const categories = [
   },
 ];
 
+// Directory component
+
+// maps over categories array and renders DirectoryItem component which is passed a category prop and sets key
 const Directory = () => {
   return (
     <DirectoryContainer>

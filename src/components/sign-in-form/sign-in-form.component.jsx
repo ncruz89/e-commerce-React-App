@@ -15,14 +15,21 @@ const defaultFormFields = {
   password: "",
 };
 
+// SignInForm component
+// handles form field state
+
+// renders Sign in form which contains two input fields and two Button components
+
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
+  // helper function that resets form fields back to default state
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
+  // helper function that calls function in firebase.utils which calls firebase's google sign in method
   const signInWithGoogle = async () => {
     try {
       await signInWithGooglePopup();
@@ -31,6 +38,8 @@ const SignInForm = () => {
     }
   };
 
+  // submit handler - calls method in firebase.utils which calls firebase's signInWithEmailAndPassword method
+  // resets form fields if successful
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -51,6 +60,8 @@ const SignInForm = () => {
     }
   };
 
+  // change handler for input fields
+  // sets form fields with updated values
   const handleChange = (event) => {
     const { name, value } = event.target;
 

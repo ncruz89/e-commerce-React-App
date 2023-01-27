@@ -15,10 +15,3 @@ export const AuthenticationContainer = styled.div`
     }
   }
 `;
-
-// .authentication-container {
-//   display: flex;
-//   width: 900px;
-//   justify-content: space-between;
-//   margin: 30px auto;
-// }

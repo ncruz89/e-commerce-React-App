@@ -6,6 +6,12 @@ import {
   DirectoryItemContainer,
 } from "./directory-item.styles.jsx";
 
+// DirectoryItem component
+// receives category prop
+// renders an item directory container that has an image along with a body
+// on click handler that calls onNavigateHandler
+// onNavigateHandler sets navigation route that was passed in through category prop
+
 const DirectoryItem = ({ category }) => {
   const { imageUrl, title, route } = category;
   const navigate = useNavigate();

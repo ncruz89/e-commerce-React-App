@@ -14,6 +14,11 @@ import {
   selectCartTotal,
 } from "../../store/cart/cart.selector";
 
+// Checkout component
+// sets up layout for checkout page
+// maps through cartItems array and renders each cartItem as a CheckoutItem component
+// Also renders Total and stripe PaymentForm component
+
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
